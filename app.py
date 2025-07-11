@@ -65,3 +65,15 @@ if submit and video_file:
         st.download_button("📊 Download Excel", excel_bytes, file_name="transcription.csv")
 
     st.success("✅ Transcription complete!")
+# After generating srt_output
+with open("output.srt", "w", encoding="utf-8") as srt_file:
+    srt_file.write(srt_output)
+
+# Streamlit download button
+with open("output.srt", "rb") as f:
+    st.download_button(
+        label="📥 Download Transcript (SRT)",
+        data=f,
+        file_name="transcription.srt",
+        mime="text/plain"
+    )
